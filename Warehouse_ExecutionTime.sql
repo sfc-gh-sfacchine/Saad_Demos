@@ -3,7 +3,7 @@ SELECT query_id,
   query_text,
   total_elapsed_time/1000 AS query_execution_time_seconds,
   partitions_scanned,
-  partitions_total,
+  partitions_total
 FROM snowflake.account_usage.query_history Q
 WHERE warehouse_name = 'my_warehouse' AND TO_DATE(Q.start_time) > DATEADD(day,-1,TO_DATE(CURRENT_TIMESTAMP()))
   AND total_elapsed_time > 0 --only get queries that actually used compute
