@@ -1,3 +1,5 @@
+USE WAREHOUSE DEMO_WH;
+
 SELECT query_id,
   ROW_NUMBER() OVER(ORDER BY partitions_scanned DESC) AS query_id_int,
   query_text,
