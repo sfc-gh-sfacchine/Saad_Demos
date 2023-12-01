@@ -7,9 +7,5 @@ SELECT query_id,
   partitions_scanned,
   partitions_total
 FROM snowflake.account_usage.query_history Q
-WHERE warehouse_name = 'my_warehouse' AND TO_DATE(Q.start_time) > DATEADD(day,-1,TO_DATE(CURRENT_TIMESTAMP()))
-  AND total_elapsed_time > 0 --only get queries that actually used compute
-  AND error_code IS NULL
-  AND partitions_scanned IS NOT NULL
 ORDER BY total_elapsed_time desc
 LIMIT 50;
